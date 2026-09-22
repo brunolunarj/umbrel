@@ -29,7 +29,7 @@ Docker container of [Umbrel](https://umbrel.com/umbrelos), an OS for self-hostin
 ```yaml
 services:
   umbrel:
-    image: dockurr/umbrel
+    image: brunolunarj/umbrel
     container_name: umbrel
     pid: host
     ports:

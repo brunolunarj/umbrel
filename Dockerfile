@@ -1,12 +1,12 @@
 # syntax=docker/dockerfile:1
 
-ARG YQ_VERSION=4.24.5
-ARG NODE_VERSION=22.13.0
-ARG DEBIAN_VERSION=bookworm
+ARG YQ_VERSION=4.53.6
+ARG NODE_VERSION=22.23.2
+ARG DEBIAN_VERSION=trixie
 
 FROM --platform=$BUILDPLATFORM scratch AS base
 
-ARG VERSION_ARG="1.7.4"
+ARG VERSION_ARG="2.0.0"
 ADD https://github.com/getumbrel/umbrel.git#${VERSION_ARG} /
 
 # Apply custom patches
@@ -104,7 +104,7 @@ RUN <<EOF
 
   # Add Docker repository
   curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /usr/share/keyrings/docker.gpg
-  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker.gpg] https://download.docker.com/linux/debian bookworm stable" > /etc/apt/sources.list.d/docker.list
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker.gpg] https://download.docker.com/linux/debian trixie stable" > /etc/apt/sources.list.d/docker.list
 
   # Install Docker client
   apt-get update -y
